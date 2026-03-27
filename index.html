@@ -1,98 +1,799 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Liza Broome | Executive Virtual Assistant</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liza Broome | Earthy Diva Business Support</title>
+  <meta name="description" content="Executive virtual assistant and creative operations support for busy professionals, creatives, and entrepreneurs." />
   <style>
+    :root {
+      --bg: #f5f1e8;
+      --bg-soft: #f8f4ec;
+      --bg-card: rgba(255,255,255,0.78);
+      --text: #3e2f24;
+      --text-soft: #6b5645;
+      --brown: #5a4634;
+      --gold: #c8a96a;
+      --gold-dark: #8a6a34;
+      --line: #e6dcc9;
+      --sage: #9aa786;
+      --white: #ffffff;
+      --shadow: 0 18px 40px rgba(90, 70, 52, 0.12);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #F5F1E8;
-      color: #3E2F24;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
     }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0;
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    p { margin: 0; }
+    a { text-decoration: none; color: inherit; }
+
     .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
     }
-    h1, h2 {
-      font-family: Georgia, serif;
-    }
-    h1 {
-      font-size: 42px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin-top: 20px;
-      background: #5A4634;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
+
     .section {
-      margin-top: 50px;
+      padding: 72px 0;
     }
-    ul {
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(200, 169, 106, 0.45);
+      background: rgba(255,255,255,0.72);
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 11px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top left, rgba(200,169,106,0.18), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(141,155,125,0.12), transparent 28%),
+        linear-gradient(135deg, #f8f4ec 0%, #f5f1e8 45%, #efe6d5 100%);
+    }
+
+    .hero-grid,
+    .about-grid,
+    .process-grid,
+    .contact-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding: 88px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      max-width: 700px;
+      margin-top: 18px;
+    }
+
+    .hero p.lead {
+      margin-top: 22px;
+      max-width: 720px;
+      font-size: 20px;
       line-height: 1.8;
+      color: #5f4b3b;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--white);
+      box-shadow: 0 12px 24px rgba(90, 70, 52, 0.18);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(90, 70, 52, 0.25);
+      background: rgba(255,255,255,0.55);
+      color: #4a392c;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.68);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .glass-card,
+    .small-card,
+    .service-card,
+    .package-card,
+    .contact-card,
+    .process-card {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .glass-card {
+      grid-column: span 2;
+      padding: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-panel {
+      min-height: 320px;
+      border-radius: 24px;
+      padding: 24px;
+      color: #3f3024;
+      background: linear-gradient(135deg, #e9dcc5 0%, #d7c3a1 45%, #b48d62 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+
+    .feature-inner {
+      height: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(3px);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-top {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      color: rgba(90,70,52,0.85);
+    }
+
+    .feature-inner h3 {
+      font-size: 34px;
+      margin-top: 14px;
+      max-width: 360px;
+    }
+
+    .feature-inner p {
+      max-width: 360px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #4c3b2d;
+    }
+
+    .small-card {
+      padding: 22px;
+      background: var(--bg-soft);
+    }
+
+    .small-card.dark {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .small-card .label {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      color: var(--gold-dark);
+    }
+
+    .small-card.dark .label {
+      color: #e7cf9d;
+    }
+
+    .highlight-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .highlight-item {
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.84);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--gold);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .small-card.dark p {
+      color: #f3e8d6;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .section-title {
+      margin-top: 14px;
+      font-size: clamp(30px, 4vw, 48px);
+      max-width: 700px;
+    }
+
+    .section-text {
+      margin-top: 18px;
+      max-width: 640px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    .about-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: end;
+    }
+
+    .mood-card {
+      padding: 14px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .mood-card .inner {
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.18);
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .mood-card img,
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mood-1 { background: linear-gradient(180deg, #eadfcf 0%, #d2b48c 100%); margin-top: 36px; }
+    .mood-2 { background: linear-gradient(180deg, #dfe3d7 0%, #9aa786 100%); }
+    .mood-3 { background: linear-gradient(180deg, #e9d3c2 0%, #b78367 100%); margin-top: 52px; }
+
+    .services-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.5);
+    }
+
+    .services-top,
+    .packages-top {
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: end;
+      flex-wrap: wrap;
+      margin-bottom: 42px;
+    }
+
+    .services-grid,
+    .packages-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid #e7dcc7;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 34px rgba(90, 70, 52, 0.10);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #efe4cf 0%, #d9c0a0 100%);
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+    }
+
+    .service-card p {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .process-grid {
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+    }
+
+    .process-card {
+      background: var(--brown);
+      color: white;
+      padding: 32px;
+    }
+
+    .process-card .label {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 11px;
+      color: #e8d0a0;
+    }
+
+    .process-card h2 {
+      margin-top: 12px;
+      font-size: 40px;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      color: #f2dfba;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step p {
+      color: #f3e8d6;
+      font-size: 14px;
+      line-height: 1.9;
+      padding-top: 4px;
+    }
+
+    .packages-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .package-card {
+      border: 1px solid #e8dcc8;
+      background: white;
+      padding: 26px;
+    }
+
+    .package-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, #fffaf2 0%, #f7efdf 100%);
+      box-shadow: 0 20px 34px rgba(90, 70, 52, 0.10);
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 11px;
+    }
+
+    .package-card h3 {
+      font-size: 28px;
+      margin-top: 16px;
+    }
+
+    .price {
+      margin-top: 12px;
+      font-size: 22px;
+      color: #b0894f;
+      font-weight: 600;
+    }
+
+    .package-card p.desc {
+      margin-top: 14px;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .package-card .mini-btn {
+      display: inline-flex;
+      margin-top: 18px;
+      padding: 10px 16px;
+      border-radius: 16px;
+      background: #efe4cf;
+      color: #4a392c;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+
+    .contact-shell {
+      border: 1px solid #e7dcc7;
+      background: rgba(255,255,255,0.82);
+      padding: 34px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card {
+      background: var(--bg-soft);
+      padding: 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .contact-card p {
+      color: #4a392c;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    footer {
+      padding: 0 0 48px;
+      text-align: center;
+      color: #8a7766;
+      font-size: 13px;
+    }
+
+    .hero-photo,
+    .mood-photo {
+      overflow: hidden;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .packages-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .glass-card {
+        grid-column: span 1;
+      }
+
+      .mood-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .section { padding: 56px 0; }
+
+      .hero-grid { padding: 64px 0; }
+
+      .services-grid,
+      .packages-grid,
+      .mood-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .feature-inner h3,
+      .process-card h2 {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
     }
   </style>
-
 </head>
-
 <body>
 
-<div class="container">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Earthy Diva Business Support</span>
+        <h1>Elevated support for busy people with big ideas.</h1>
+        <p class="lead">
+          I help professionals, creatives, and entrepreneurs get organized, reduce overwhelm,
+          and keep things moving behind the scenes with calm, polished support.
+        </p>
 
-  <h1>Calm, polished support for busy people with big ideas.</h1>
+        <div class="button-row">
+          <a class="btn btn-primary" href="mailto:lizabroome@gmail.com?subject=Interested%20in%20working%20with%20you">Work With Me</a>
+          <a class="btn btn-secondary" href="#services">View Services</a>
+        </div>
 
-  <p>
-    I help professionals, creatives, and entrepreneurs get organized,
-    reduce overwhelm, and keep things moving behind the scenes.
-  </p>
+        <div class="tag-row">
+          <span class="tag">Los Angeles, CA</span>
+          <span class="tag">Executive Virtual Assistant</span>
+          <span class="tag">Creative Operations Support</span>
+        </div>
+      </div>
 
-<a class="btn" href="mailto:lizabroome@gmail.com">Work With Me</a>
+      <div class="hero-side">
+        <div class="glass-card">
+          <div class="feature-panel">
+            <div class="feature-inner">
+              <div>
+                <div class="panel-top">Signature Support</div>
+                <h3>Grounded. Organized. Dependable.</h3>
+              </div>
+              <p>
+                The right-hand support you call when there are a lot of moving pieces and no time for things to slip.
+              </p>
+            </div>
+          </div>
+        </div>
 
-  <div class="section">
-    <h2>About</h2>
-    <p>
-      With experience supporting high-level executives, creatives, and entrepreneurs,
-      I bring a grounded yet elevated approach to virtual assistance.
-      I handle the details, anticipate needs, and keep everything flowing.
-    </p>
-  </div>
+        <div class="small-card">
+          <div class="label">What I bring</div>
+          <div class="highlight-list">
+            <div class="highlight-item"><span class="dot"></span><p>Trusted with confidential, high-level work</p></div>
+            <div class="highlight-item"><span class="dot"></span><p>Calm and effective in fast-paced environments</p></div>
+            <div class="highlight-item"><span class="dot"></span><p>Proactive, polished, and detail-oriented</p></div>
+            <div class="highlight-item"><span class="dot"></span><p>Strong communicator and natural problem solver</p></div>
+          </div>
+        </div>
 
-  <div class="section">
-    <h2>Services</h2>
-    <ul>
-      <li>Inbox & Email Management</li>
-      <li>Calendar Management & Scheduling</li>
-      <li>Travel Planning & Coordination</li>
-      <li>Research & Vendor Sourcing</li>
-      <li>Content & Social Media Support</li>
-      <li>Document Creation & Organization</li>
-      <li>Event, Meeting & Retreat Planning</li>
-      <li>General Admin & Business Support</li>
-    </ul>
-  </div>
+        <div class="small-card dark">
+          <div class="label">Best for</div>
+          <p>Entrepreneurs who need structure</p>
+          <p>Creatives with too many moving parts</p>
+          <p>Professionals who need a trusted right hand</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="section">
-    <h2>Packages</h2>
-    <p><strong>Inbox + Calendar Reset</strong> – $100</p>
-    <p><strong>Business Support Starter</strong> – $150</p>
-    <p><strong>Ongoing Support</strong> – Starting at $300/month</p>
-  </div>
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">Support that feels calm, capable, and beautifully handled.</h2>
+        <p class="section-text">
+          With experience supporting executives, creatives, and entrepreneurs in fast-paced environments,
+          I bring a grounded yet elevated approach to virtual assistance and creative operations. I handle the
+          details, protect your time, and help keep momentum steady.
+        </p>
+      </div>
 
-  <div class="section">
-    <h2>Contact</h2>
-    <p>Email: lizabroome@gmail.com</p>
-    <p>Phone: 310-498-5686</p>
-  </div>
+      <div class="mood-grid">
+        <div class="mood-card mood-1">
+          <div class="inner mood-photo">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Elegant workspace with laptop and notebook" />
+          </div>
+        </div>
+        <div class="mood-card mood-2">
+          <div class="inner mood-photo">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Professional desk and organized planning space" />
+          </div>
+        </div>
+        <div class="mood-card mood-3">
+          <div class="inner mood-photo">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Creative planning meeting" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="services" class="section services-wrap">
+    <div class="container">
+      <div class="services-top">
+        <div>
+          <div class="eyebrow">Services</div>
+          <h2 class="section-title" style="max-width: 520px;">How I support you</h2>
+        </div>
+        <p class="section-text" style="max-width: 520px; margin-top: 0;">
+          Thoughtful admin, business, and coordination support designed to give you time back and make work feel lighter.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Executive Support</h3>
+          <p>Inbox management, calendar coordination, scheduling, follow-ups, and polished day-to-day support.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Creative Operations</h3>
+          <p>Keeping projects, launches, content, and moving parts organized so ideas actually get executed.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Research & Planning</h3>
+          <p>Vendor sourcing, travel planning, event coordination, and thoughtful behind-the-scenes logistics.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Business Support</h3>
+          <p>Documents, systems, communications, light marketing support, and reliable right-hand assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container process-grid">
+      <div class="process-card">
+        <div class="label">Process</div>
+        <h2>Working together is simple.</h2>
+
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <p>Reach out and tell me what feels overwhelming.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <p>I identify the support that will help most quickly.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <p>We create a simple plan and get things moving.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="packages-top">
+          <div>
+            <div class="eyebrow">Packages</div>
+            <h2 class="section-title" style="max-width: 520px;">Ways to work with me</h2>
+          </div>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <h3>Inbox + Calendar Reset</h3>
+            <div class="price">$100</div>
+            <p class="desc">A focused reset to clean up your email, organize your schedule, and create more breathing room.</p>
+            <a class="mini-btn" href="mailto:lizabroome@gmail.com?subject=Interested%20in%20your%20services">Get started</a>
+          </div>
+
+          <div class="package-card featured">
+            <span class="pill">Most Popular</span>
+            <h3>Business Support Starter</h3>
+            <div class="price">$150</div>
+            <p class="desc">Administrative help, organization, and light strategy support to get your business moving again.</p>
+            <a class="mini-btn" href="mailto:lizabroome@gmail.com?subject=Interested%20in%20your%20services">Get started</a>
+          </div>
+
+          <div class="package-card">
+            <h3>Ongoing Support</h3>
+            <div class="price">Starting at $300/month</div>
+            <p class="desc">Consistent support for entrepreneurs, creatives, and busy professionals who need a trusted right hand.</p>
+            <a class="mini-btn" href="mailto:lizabroome@gmail.com?subject=Interested%20in%20your%20services">Get started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="contact-shell">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Let’s connect</div>
+            <h2 class="section-title">Ready for more ease, organization, and follow-through?</h2>
+            <p class="section-text">
+              If you need a reliable right hand to help keep your schedule, business, or creative projects moving, I’d love to support you.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <p><strong>Email:</strong> lizabroome@gmail.com</p>
+            <p><strong>Phone:</strong> 310-498-5686</p>
+            <a class="btn btn-primary" style="margin-top: 8px;" href="mailto:lizabroome@gmail.com?subject=Interested%20in%20working%20with%20you">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Earthy Diva Business Support · Liza Broome
+  </footer>
 
 </body>
 </html>
